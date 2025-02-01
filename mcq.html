@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCPL.in - MCQ</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>MyCPL.in</h1>
+      <p>Aviation Learning Platform</p>
+    </div>
+  </header>
+  <div class="container">
+    <h1 id="topic-title">MCQs for <span id="topic-name"></span></h1>
+    <button onclick="goBack()" class="back-button">Back to Topics</button>
+    <button onclick="goHome()" class="back-button">Back to Home</button>
+    <div class="question-list" id="question-list">
+      <!-- Questions will be dynamically added here -->
+    </div>
+    <div id="feedback" class="feedback"></div> <!-- Feedback will be displayed here -->
+  </div>
+
+  <script>
+    // Get the selected subject and topic from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const subject = urlParams.get('subject');
+    const topic = urlParams.get('topic');
+
+    console.log(`Selected Subject: ${subject}, Topic: ${topic}`); // Debugging
+
+    // Display the topic name
+    document.getElementById('topic-name').textContent = topic.replace('_', ' ');
+
+    // Load and display questions
+    async function loadQuestions() {
+      try {
+        const filePath = `data/${subject}/${topic}.csv`;
+        console.log(`Fetching CSV from: ${filePath}`); // Debugging
+
+        const response = await fetch(filePath);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch CSV: ${response.status} ${response.statusText}`);
+        }
+        const csvText = await response.text();
+        console.log('CSV Text:', csvText); // Debugging
+
+        // Parse CSV using PapaParse
+        const results = Papa.parse(csvText, {
+          header: true, // Use the first row as headers
+          skipEmptyLines: true,
+        });
+
+        console.log('Parsed Results:', results); // Debugging
+        displayQuestions(results.data);
+      } catch (error) {
+        console.error('Error loading questions:', error);
+        alert('Failed to load questions. Please check the console for details.');
+      }
+    }
+
+    function displayQuestions(questions) {
+      const questionList = document.getElementById('question-list');
+      questionList.innerHTML = ''; // Clear previous content
+
+      if (!questions || questions.length === 0) {
+        questionList.innerHTML = '<p>No questions found for this topic.</p>';
+        return;
+      }
+
+      questions.forEach((question, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+          <h3>Question ${index + 1}: ${question.Question}</h3>
+          <ul>
+            ${['A', 'B', 'C', 'D'].map(option => `
+              <li onclick="checkAnswer('${option}', '${question['Correct Answer'].trim()}', '${question.Explanation}', this)">
+                ${question[`Option ${option}`]}
+              </li>
+            `).join('')}
+          </ul>
+        `;
+        questionList.appendChild(card);
+      });
+    }
+
+    function checkAnswer(selectedAnswer, correctAnswer, explanation, element) {
+      const feedback = document.getElementById('feedback');
+      feedback.innerHTML = ''; // Clear previous feedback
+
+      if (selectedAnswer === correctAnswer) {
+        feedback.innerHTML = `
+          <p class="correct">Correct! 🎉</p>
+          <p>Explanation: ${explanation}</p>
+        `;
+        element.style.backgroundColor = '#4CAF50'; // Green for correct answer
+      } else {
+        feedback.innerHTML = `
+          <p class="incorrect">Incorrect! ❌</p>
+          <p>Explanation: ${explanation}</p>
+        `;
+        element.style.backgroundColor = '#F44336'; // Red for incorrect answer
+      }
+    }
+
+    function goBack() {
+      // Redirect to the topics page
+      const urlParams = new URLSearchParams(window.location.search);
+      const subject = urlParams.get('subject');
+      window.location.href = `topics.html?subject=${subject}`;
+    }
+
+    function goHome() {
+      // Redirect to the home page
+      window.location.href = 'index.html';
+    }
+
+    // Load questions when the page loads
+    loadQuestions();
+  </script>
+</body>
+</html>

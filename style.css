@@ -1,0 +1,194 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9; /* Light gray background */
+    color: #333;
+    min-height: 100vh;
+  }
+  
+  header {
+    background: #2c3e50; /* Navy blue header */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header .logo h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: white;
+  }
+  
+  header .logo p {
+    font-size: 1rem;
+    color: #b3cde0; /* Light blue for tagline */
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50; /* Navy blue for headings */
+    margin-bottom: 40px;
+  }
+  
+  /* Subject and Topic Cards */
+  .subject-list, .topic-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .subject-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .subject-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .subject-card h2 {
+    font-size: 1.8rem;
+    color: #2c3e50; /* Navy blue for card headings */
+    margin: 0;
+  }
+  
+  .subject-card p {
+    font-size: 1rem;
+    color: #7f8c8d; /* Gray for card text */
+    margin: 10px 0 0;
+  }
+  
+  /* Contact Us Card */
+  .contact-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .contact-card h2 {
+    font-size: 1.8rem;
+    color: #2c3e50; /* Navy blue for headings */
+    margin: 0;
+  }
+  
+  .contact-card p {
+    font-size: 1rem;
+    color: #7f8c8d; /* Gray for text */
+    margin: 10px 0 20px;
+  }
+  
+  .contact-button {
+    background: #3498db; /* Blue for button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px; /* Circular button */
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .contact-button:hover {
+    background: #2980b9; /* Darker blue on hover */
+  }
+  
+  /* MCQ Page Styles */
+  .question-list {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question-card h3 {
+    font-size: 1.4rem;
+    color: #2c3e50; /* Navy blue for headings */
+    margin: 0 0 15px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    background: #3498db; /* Blue for buttons */
+    color: white;
+    border-radius: 50px; /* Circular buttons */
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  li:hover {
+    background: #2980b9; /* Darker blue on hover */
+  }
+  
+  #feedback {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .correct {
+    color: #27ae60; /* Green for correct feedback */
+    font-weight: bold;
+  }
+  
+  .incorrect {
+    color: #e74c3c; /* Red for incorrect feedback */
+    font-weight: bold;
+  }
+  
+  /* Back and Home Buttons */
+  .back-button, .home-button {
+    background: #3498db; /* Blue for buttons */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px; /* Circular button */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    margin-right: 10px; /* Space between buttons */
+  }
+  
+  .back-button:hover, .home-button:hover {
+    background: #2980b9; /* Darker blue on hover */
+  }

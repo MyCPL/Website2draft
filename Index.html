@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCPL.in - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>MyCPL.in</h1>
+      <p>Aviation Learning Platform</p>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Select a Subject</h1>
+    <div class="subject-list">
+      <div class="subject-card" onclick="navigateToTopics('met')">
+        <h2>Met</h2>
+        <p>Meteorology</p>
+      </div>
+      <div class="subject-card" onclick="navigateToTopics('nav')">
+        <h2>Nav</h2>
+        <p>Navigation</p>
+      </div>
+      <div class="subject-card" onclick="navigateToTopics('tech_gen')">
+        <h2>Tech Gen</h2>
+        <p>General Technical</p>
+      </div>
+      <div class="subject-card" onclick="navigateToTopics('tech_speci')">
+        <h2>Tech Speci</h2>
+        <p>Specific Technical</p>
+      </div>
+      <div class="subject-card" onclick="navigateToTopics('regulations')">
+        <h2>Regulations</h2>
+        <p>Aviation Regulations</p>
+      </div>
+    </div>
+    <!-- Contact Us Card -->
+    <div class="contact-card">
+      <h2>Contact Us</h2>
+      <p>Have questions or feedback? Reach out to us!</p>
+      <a href="mailto:support@mycpl.in" class="contact-button">Email Us</a>
+    </div>
+  </div>
+
+  <script>
+    function navigateToTopics(subject) {
+      // Redirect to topics page with the selected subject
+      window.location.href = `topics.html?subject=${subject}`;
+    }
+  </script>
+</body>
+</html>
